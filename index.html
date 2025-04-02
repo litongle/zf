@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时更换图片</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #image {
+            max-width: 100%;
+            height: auto;
+        }
+        .text {
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <img id="image" src="image1.jpg" alt="Image">
+    <div class="text" id="text1">提示文本1</div>
+    <div class="text" id="text2">提示文本2</div>
+
+    <script>
+        const images = ['image1.jpg', 'image2.jpg', 'image3.jpg']; // 图片列表
+        let currentIndex = 0;
+
+        function changeImage() {
+            currentIndex = (currentIndex + 1) % images.length;
+            document.getElementById('image').src = images[currentIndex];
+        }
+
+        setInterval(changeImage, 10 * 60 * 1000); // 10分钟换一张图片
+    </script>
+</body>
+</html>
